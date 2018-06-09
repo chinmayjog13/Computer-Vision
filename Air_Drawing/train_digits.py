@@ -77,7 +77,6 @@ def get_hog() :
     hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,histogramNormType,L2HysThreshold,gammaCorrection,nlevels, signedGradient)
 
     return hog
-    affine_flags = cv2.WARP_INVERSE_MAP|cv2.INTER_LINEAR
 
 
 
@@ -93,7 +92,8 @@ if __name__ == '__main__':
     shuffle = rand.permutation(len(digits))
     digits, labels = digits[shuffle], labels[shuffle]
     
-    print('Deskew images ... ')
+    #Deskew images to align them uniformly
+    #print('Deskew images ... ')
     #digits_deskewed = list(map(deskew, digits))
     
     print('Defining HoG parameters ...')
@@ -116,9 +116,11 @@ if __name__ == '__main__':
     
     
     print('Training SVM model ...')
+    # C and gamma values have been used as provided by Satya Mallick. USE CROSS VALIDATION TO TRAIN YOUR OWN MODEL.
+    # DO NOT USE ENTIRE DATASET FOR TRAINING
     model = svm.SVC(C=12.5, gamma=0.50625, max_iter=5000)
     #model.fit(hog_descriptors_train, labels_train)
-    model.fit(hog_descriptors, labels)
+    model.fit(hog_descriptors_train, labels_train)
 
     print('Saving SVM model ...')
     #model.save('digits_svm.dat')
