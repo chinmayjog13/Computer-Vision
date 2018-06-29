@@ -39,4 +39,4 @@ delaunay.py calculates the weighted average of the selected points of two images
 
 morph.py morphs individual triangular regions of the images using the text file created in delaunay.py. Then images are morphed using alpha blending. By varying the value of alpha, we can see the animation.
 
-![image](https://user-images.githubusercontent.com/37167529/42116605-dbdc8b22-7bac-11e8-8f29-4ee8b60c976f.jpg)
+![Captured points](https://user-images.githubusercontent.com/37167529/42116605-dbdc8b22-7bac-11e8-8f29-4ee8b60c976f.jpg?style=centerme)
