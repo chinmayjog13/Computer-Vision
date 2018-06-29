@@ -38,3 +38,5 @@ get_points.py uses a mouse callback function to store selected points plus four 
 delaunay.py calculates the weighted average of the selected points of two images, and creates Delaunay triangles using averaged points as vertices. This ensures that same triangles are created for each image. This list of vertices is stored in a text file.
 
 morph.py morphs individual triangular regions of the images using the text file created in delaunay.py. Then images are morphed using alpha blending. By varying the value of alpha, we can see the animation.
+
+![Captured points](files/Users/CJog/Documents/opencv_codes/Face_Morphing/image.jpg)
