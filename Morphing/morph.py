@@ -58,6 +58,7 @@ if __name__ == '__main__':
     # List of images to be morphed in sequential order
     file = ['keaton', 'batman_keaton', 'batman_bale', 'bale', 'affleck', 'batman_affleck']
     
+    cap = cv2.VideoWriter('morph.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (300,400))
     # Loop over all images morphing two at a time
     for j in range(len(file)-1):
         # Read points from text file
@@ -65,7 +66,7 @@ if __name__ == '__main__':
         points2 = read_points(file[j+1] + '.txt')
         img1 = cv2.imread(file[j] + '.jpg')
         img2 = cv2.imread(file[j+1] + '.jpg')
-        
+        cap.write(img1)
         img1 = np.float32(img1)
         img2 = np.float32(img2)
         
@@ -98,6 +99,7 @@ if __name__ == '__main__':
             # Different delays for user to see each end result before morphing to another image
             # and give a smooth animation
             cv2.imshow('Morphed', np.uint8(output))
+            cap.write(np.uint8(output))
             if alpha == 0 and j == 0:
                 cv2.waitKey(1000)
             if j == 4 and alpha == 1:
@@ -106,3 +108,5 @@ if __name__ == '__main__':
                 cv2.waitKey(500)
             else:
                 cv2.waitKey(50)
+    cap.release()
+    
